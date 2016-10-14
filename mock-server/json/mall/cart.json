@@ -1,0 +1,24 @@
+[
+  {
+    "goodsId": "42",
+    "sizeId": "44",
+    "userId": "90",
+    "count": 1,
+    "id": "320",
+    "name": "商品123",
+    "price": 111,
+    "thumb": "http://cdn.tig.qq.com/images/dev/doge.jpg",
+    "sizeName": "规格一"
+  },
+  {
+    "goodsId": "42",
+    "sizeId": "42",
+    "userId": "90",
+    "count": 1,
+    "id": "319",
+    "name": "商品234",
+    "price": 99,
+    "thumb": "http://cdn.tig.qq.com/images/dev/doge.jpg",
+    "sizeName": "规格二"
+  }
+]

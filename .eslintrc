@@ -1,0 +1,22 @@
+{
+  "env": {
+    "node": true
+  },
+  ecmaFeatures: { //开启 ESLint JSX 支持
+    jsx: true
+  },
+  "globals": {
+  },
+  "plugins": [
+  ],
+  "extends": "eslint-config-airbnb",
+  "rules": { //0 ok 1 Warning 2 Error
+    "comma-dangle": 0,
+    "no-console": 0,
+    "id-length": 0,
+    "func-names": 0,
+    "no-var": 0,
+    "react/prop-types": 0,
+    "react/no-multi-comp":0
+  }
+}
