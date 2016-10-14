@@ -1,3 +1,5 @@
+react-redux-webpack-boilerplate，redux + redux类前端项目模版
+
 ## 使用
 
 一、 系统安装Nodejs
