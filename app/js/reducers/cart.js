@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import objectAssign from 'object-assign';
 import {Types} from '../constants/cart';
-import {user} from './base/user';
+import {user, loading} from './base/user';
 
 export function carts(state = [], action) {
   switch (action.type) {
@@ -64,6 +64,7 @@ export function isShow(state = false, action) {
 
 const rootReducer = combineReducers({
   user,
+  loading,
   carts,
   isShow
 });

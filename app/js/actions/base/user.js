@@ -4,6 +4,6 @@ export function fetchUser() {
   return {
     url: '/user/info',
     method: 'GET',
-    types: ['REQUEST', Types.LOGIN_USER, 'FAILURE']
+    type: Types.LOGIN_USER
   };
 }

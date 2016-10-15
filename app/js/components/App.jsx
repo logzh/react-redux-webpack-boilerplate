@@ -9,11 +9,13 @@ var App = function(props) {
 };
 
 App.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  loading: PropTypes.number
 };
 
 App.defaultProps = {
-  user: {}
+  user: {},
+  loading: 0
 };
 
 export default App;

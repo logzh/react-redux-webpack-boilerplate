@@ -9,7 +9,7 @@ export function increaseCount(item) {
     url: `/mall/cart/${id}`,
     data: {count: count + 1, sizeId},
     method: 'PUT',
-    types: ['REQUEST', Types.CART_INC_COUNT, 'FAILURE']
+    type: Types.CART_INC_COUNT
   };
 }
 
@@ -20,7 +20,7 @@ export function decreaseCount(item) {
     url: `/mall/cart/${id}`,
     data: {count: count - 1, sizeId},
     method: 'PUT',
-    types: ['REQUEST', Types.CART_DES_COUNT, 'FAILURE']
+    type: Types.CART_DES_COUNT
   };
 }
 
@@ -31,7 +31,7 @@ export function updateCount(data) {
     url: `/mall/cart/${id}`,
     data: {count: count, sizeId},
     method: 'PUT',
-    types: ['REQUEST', Types.CART_UPDATE_COUNT, 'FAILURE']
+    type: Types.CART_UPDATE_COUNT
   };
 }
 
@@ -42,7 +42,7 @@ export function deleteItem(item) {
     url: `/mall/cart/${id}`,
     data: {sizeId},
     method: 'DELETE',
-    types: ['REQUEST', Types.CART_DEL_ITEM, 'FAILURE']
+    type: Types.CART_DEL_ITEM
   };
 
 }
@@ -51,7 +51,7 @@ export function fetchCart() {
   return {
     url: '/mall/cart',
     method: 'GET',
-    types: ['REQUEST', Types.GET_SERVER_CARTS, 'FAILURE']
+    type: Types.GET_SERVER_CARTS
   };
 }
 
@@ -62,7 +62,7 @@ export function addCart(goods) {
     url: '/mall/cart',
     method: 'POST',
     data: {goodsId: goods.id, sizeId},
-    types: ['REQUEST', Types.ADD_SERVER_CART, 'FAILURE']
+    type: Types.ADD_SERVER_CART
   };
 }
 

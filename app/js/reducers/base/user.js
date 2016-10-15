@@ -11,3 +11,16 @@ export function user(state = {isLoginEd: false}, action) {
       return state;
   }
 }
+
+export function loading(state = 0, action) {
+  switch (action.type) {
+    case 'REQUEST':
+      return state + 1;
+
+    case 'RESPONE':
+      return state - 1;
+
+    default:
+      return state;
+  }
+}

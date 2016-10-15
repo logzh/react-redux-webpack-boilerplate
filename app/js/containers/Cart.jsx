@@ -35,7 +35,7 @@ var Content = React.createClass({
     });
 
     return (
-        <App user={props.user}>
+        <App user={props.user} loading={props.loading}>
 
           <Cart {...props} totalCount={totalCount}/>
 
@@ -45,11 +45,7 @@ var Content = React.createClass({
 });
 
 function mapStateToProps(state) {
-  return {
-    user: state.user,
-    carts: state.carts,
-    isShow: state.isShow
-  };
+  return state;
 }
 
 function mapDispatchToProps(dispatch) {

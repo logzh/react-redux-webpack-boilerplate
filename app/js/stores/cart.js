@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/cart';
 import thunkMiddleware from 'redux-thunk';
-import apiMiddleware  from '../middle/apiMiddle';
+import apiMiddleware  from '../middle/http';
 
 let middleware = [thunkMiddleware, apiMiddleware];
 
