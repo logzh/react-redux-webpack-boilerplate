@@ -17,7 +17,7 @@ export function loading(state = 0, action) {
     case 'REQUEST':
       return state + 1;
 
-    case 'RESPONE':
+    case 'RESPONSE':
       return state - 1;
 
     default:
