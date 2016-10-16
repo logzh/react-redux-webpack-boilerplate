@@ -37,6 +37,6 @@ export default store => next => action => {
       .fail(function(res) {
         next(objectAssign({}, {meta: data}, {error: true, type: 'FAILURE', payload: res}));
       }).always(function(res) {
-        next(objectAssign({}, {meta: data}, {type: 'RESPONE', payload: res}));
+        next(objectAssign({}, {meta: data}, {type: 'RESPONSE', payload: res}));
       });
 };
