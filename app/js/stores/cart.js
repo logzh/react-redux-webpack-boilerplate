@@ -5,7 +5,7 @@ import apiMiddleware  from '../middle/http';
 
 let middleware = [thunkMiddleware, apiMiddleware];
 
-if (process.env.NODE_ENV !== 'production') {
+if (!PRODUCTION) {
   let logger = require('redux-logger')();
   middleware = [...middleware, logger];
 }
