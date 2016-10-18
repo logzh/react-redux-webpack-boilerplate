@@ -37,7 +37,7 @@ var config = {
     commonsPlugin,
     new ExtractTextPlugin('static/css/[name].[chunkhash].css'),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"development"'
+      PRODUCTION: JSON.stringify(false),
     })
   ]
 };
