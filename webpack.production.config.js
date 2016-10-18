@@ -16,7 +16,7 @@ var config = merge(base, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      PRODUCTION: JSON.stringify(true),
     })
   ]
 });
