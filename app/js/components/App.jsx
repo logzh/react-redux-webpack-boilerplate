@@ -3,6 +3,7 @@ import React, {PropTypes, Component} from 'react';
 var App = function(props) {
   return (
       <div>
+        <div>{props.user.name}</div>
         {props.children}
       </div>
   );
@@ -14,7 +15,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  user: {},
+  user: {name:''},
   loading: 0
 };
 

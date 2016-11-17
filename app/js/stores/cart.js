@@ -5,10 +5,8 @@ import apiMiddleware  from '../middle/http';
 
 let middleware = [thunkMiddleware, apiMiddleware];
 
-if (!PRODUCTION) {
-  let logger = require('redux-logger')();
-  middleware = [...middleware, logger];
-}
+let logger = require('redux-logger')();
+middleware = [...middleware, logger];
 
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 

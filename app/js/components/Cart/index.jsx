@@ -7,8 +7,6 @@ require('./index.css');
 class Cart extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {fromState: false,};
-    // this.onSelectPic = this.onSelectPic.bind(this);
   }
 
 
@@ -27,12 +25,24 @@ class Cart extends React.Component {
 
           <div >
             <p>上面的购物车操作都是异步Action，点击下面按钮触发一个同步Action</p>
-            <button onClick={props.actions.switchPanel.bind(this)}>点击</button>
+            <button onClick={props.actions.switchPanel}>点击</button>
             isShow的值是：{props.isShow ? 'true':'false'}
             </div>
         </div>
     );
   }
 }
+
+var noop = function() {};
+Cart.defaultProps = {
+  items: [],
+  actions: {
+    increaseCount: noop,
+    decreaseCount: noop,
+    updateCount: noop,
+    deleteItem: noop,
+    switchPanel: noop
+  }
+};
 
 export default Cart;
