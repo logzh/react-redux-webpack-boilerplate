@@ -51,6 +51,7 @@ export function fetchCart() {
   return {
     url: '/mall/cart',
     method: 'GET',
+    params: {test: 123},
     type: Types.GET_SERVER_CARTS
   };
 }

@@ -24,6 +24,24 @@ var dev = [
 ];
 
 var pro = [
+  {
+    title: '首页',
+    filename: 'index.html',
+    template: 'app/html/home.html',
+    chunks: []
+  },
+  {
+    title: 'cart',
+    filename: 'cart.html',
+    template: devTemplate,
+    chunks: ['vendor', 'cart']
+  },
+  {
+    title: 'cart-normal',
+    filename: 'cart-normal.html',
+    template: devTemplate,
+    chunks: ['vendor', 'cart-normal']
+  }
 ];
 
 module.exports = {

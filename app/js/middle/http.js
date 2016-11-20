@@ -1,5 +1,24 @@
-var $ = require('jquery'); // 可以更换为其他库
 import objectAssign from 'object-assign';
+import {Promise} from 'es6-promise'
+import axios from 'axios'
+import qs from 'qs'
+
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
+
+axios.interceptors.request.use(function(config) {
+  if (config.method === 'post' || config.method === 'put') {
+    config.data = qs.stringify(config.data)
+  }
+
+  if (config.url.match(/\.json$/) === null) {
+    config.url = '/cgi' + config.url;
+  }
+
+  return config;
+}, function(error) {
+  return Promise.reject(error);
+});
 
 export default store => next => action => {
   var {
@@ -7,7 +26,7 @@ export default store => next => action => {
       url = '',
       mockUrl = '',
       method = 'GET',
-      dataType = 'json',
+      params = {},
       data = {}
   } = action;
 
@@ -15,28 +34,33 @@ export default store => next => action => {
     return next(action);
   }
 
-  // if (
-  //     !Array.isArray(types) ||
-  //     types.length !== 3 || !types.every(type => typeof type === 'string')
-  // ) {
-  //   throw new Error('Expected an array of three string types.');
-  // }
-
   next(objectAssign({}, data, {type: 'REQUEST'}));
 
-  url = '/cgi' + url;
+  return axios({url: url, data: data, params: params, method: method})
+      .then(function(res) {
+        next(objectAssign({}, {meta: data}, {type: type, payload: res.data}));
+        next(objectAssign({}, {meta: data}, {type: 'RESPONSE', payload: res.data}));
+      }).catch(function(error) {
 
-  return $.ajax({url: url, data: data, dataType: dataType, type: method})
-      .done(function(res, status, jqXHR) {
-        if (res.state === 'redirect') {
-          location.href = res.url;
-          return;
+        switch (error.response.status) {
+          case 401:
+            if (typeof window !== 'undefined') {
+              console.log('401'); // window.location.href = '...'
+              return;
+            }
+            break;
+          case 404:
+            console.log('Not Found');// window.location.href = '...'
+            break;
+          case 500:
+            if (typeof error.response.data.errCode !== 'undefined' && typeof error.response.data.message !== 'undefined') {
+              console.log(error.response.data.message);
+            }
+            break;
+          default:
+            break;
         }
-        next(objectAssign({}, {meta: data}, {type: type, payload: res}));
-      })
-      .fail(function(res) {
-        next(objectAssign({}, {meta: data}, {error: true, type: 'FAILURE', payload: res}));
-      }).always(function(res) {
-        next(objectAssign({}, {meta: data}, {type: 'RESPONSE', payload: res}));
+        next(objectAssign({}, {meta: data}, {error: true, type: 'FAILURE', payload: error.response.data}));
+        next(objectAssign({}, {meta: data}, {type: 'RESPONSE'}));
       });
 };

@@ -1,14 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
 var entry = require('./entry.js');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('vendor', 'static/js/vendor.[hash].js');
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
   entry: entry,
   output: {
-    filename: 'static/js/[name].[chunkhash].js'
+    filename: 'static/js/[name].js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx'], // 配置可以不书写的后缀名
@@ -34,8 +32,6 @@ var config = {
     ]
   },
   plugins: [
-    commonsPlugin,
-    new ExtractTextPlugin('static/css/[name].[chunkhash].css'),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
     })
