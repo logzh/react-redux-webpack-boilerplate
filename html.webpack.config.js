@@ -14,12 +14,6 @@ var dev = [
     filename: 'cart.html',
     template: devTemplate,
     chunks: ['vendor', 'cart']
-  },
-  {
-    title: 'cart-normal',
-    filename: 'cart-normal.html',
-    template: devTemplate,
-    chunks: ['vendor', 'cart-normal']
   }
 ];
 
@@ -35,12 +29,6 @@ var pro = [
     filename: 'cart.html',
     template: devTemplate,
     chunks: ['vendor', 'cart']
-  },
-  {
-    title: 'cart-normal',
-    filename: 'cart-normal.html',
-    template: devTemplate,
-    chunks: ['vendor', 'cart-normal']
   }
 ];
 
