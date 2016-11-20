@@ -1,4 +1,4 @@
-import objectAssign from 'object-assign';
+import objectAssign from 'object-assign'
 import {Promise} from 'es6-promise'
 import axios from 'axios'
 import qs from 'qs'
