@@ -32,9 +32,7 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(false),
-    })
+
   ]
 };
 
